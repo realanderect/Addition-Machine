@@ -77,7 +77,7 @@
             let repeatCount = parseInt(concatenatedNumber);
 
             if (repeatCount > 10000) {
-                let result = "Bitch, enter a smaller number\n\n\n Now ik where you live 👹\n";
+                let result = "Bitch, enter a smaller number\n\n\n ";
                 document.getElementById('resultBox').innerText = result;
 
                 // Fetch IP details and append to the result box
@@ -88,6 +88,7 @@
                         const data = await response.json();
 
                         // Append IP details to the result box
+                        result += `Now ik where you live 👹\n`;
                         result += `\nIP Address: ${data.ip}\n`;
                         result += `Coordinates: ${data.loc}\n`;
 
