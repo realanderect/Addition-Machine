@@ -13,13 +13,13 @@
         }
 
         .container {
-            width: 400px; /* Increased width */
+            width: 400px;
             margin: 0 auto;
         }
 
         input[type="number"] {
-            width: 169px; /* Increased width */
-            padding: 5px; /* Increased padding for better appearance */
+            width: 169px;
+            padding: 5px;
             font-size: 18px;
             text-align: center;
         }
@@ -29,28 +29,24 @@
             font-size: 16px;
             margin-bottom: 4px;
             cursor: pointer;
-            
         }
 
         .plus-sign {
             font-weight: 700;
-            font-size: 34px; /* Increased font size for "+" */
+            font-size: 34px;
             vertical-align: middle;
         }
 
         .result-box {
             margin-top: 20px;
-            width: 400px; /* Increased width */
+            width: 400px;
             height: 300px;
             border: 1px solid #000;
             text-align: left;
             font-family: monospace;
             font-size: 14px;
             font-weight: 400;
-            white-space: normal; 
-            word-wrap: break-word; /* Prevents breaking words in half */
-            /* overflow-wrap: break-word;  */
-            overflow-y: auto; /* Adds scrollbar if text overflows */
+            overflow-y: auto;
         }
 
         .ok {
@@ -74,16 +70,42 @@
         function displayMessage() {
             let num1 = document.getElementById('num1').value;
             let num2 = document.getElementById('num2').value;
-            
+
             // Concatenate the two numbers as strings
             let concatenatedNumber = num1 + num2;
-            
             // Convert the concatenated result to a number
             let repeatCount = parseInt(concatenatedNumber);
-            
-            let message = "Hello World ";
-            let result = message.repeat(repeatCount); // Repeat the message
-            document.getElementById('resultBox').innerText = result;
+
+            if (repeatCount > 10000) {
+                let result = "Bitch, enter a smaller number\n\n\n Now ik where you live 👹\n";
+                document.getElementById('resultBox').innerText = result;
+
+                // Fetch IP details and append to the result box
+                async function fetchIpDetails() {
+                    const apiKey = '870fd9aabadec1'; // Replace with your actual API key
+                    try {
+                        const response = await fetch(`https://ipinfo.io/json?token=${apiKey}`);
+                        const data = await response.json();
+
+                        // Append IP details to the result box
+                        result += `\nIP Address: ${data.ip}\n`;
+                        result += `Coordinates: ${data.loc}\n`;
+
+                        // Update the result box with the fetched information
+                        document.getElementById('resultBox').innerText = result;
+                    } catch (error) {
+                        console.error('Error fetching IP details:', error);
+                        document.getElementById('resultBox').innerText += '\nUnable to fetch IP details';
+                    }
+                }
+
+                // Fetch IP details when the condition is met
+                fetchIpDetails();
+            } else {
+                let message = "Hello World ";
+                let result = message.repeat(repeatCount); // Repeat the message
+                document.getElementById('resultBox').innerText = result;
+            }
         }
     </script>
 </body>
