@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Machine</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 400px; /* Increased width */
+            margin: 0 auto;
+        }
+
+        input[type="number"] {
+            width: 169px; /* Increased width */
+            padding: 5px; /* Increased padding for better appearance */
+            font-size: 18px;
+            text-align: center;
+        }
+
+        button {
+            padding: 2px 175px;
+            font-size: 16px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            
+        }
+
+        .plus-sign {
+            font-weight: 700;
+            font-size: 34px; /* Increased font size for "+" */
+            vertical-align: middle;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            width: 400px; /* Increased width */
+            height: 300px;
+            border: 1px solid #000;
+            text-align: left;
+            font-family: monospace;
+            font-size: 14px;
+            font-weight: 400;
+            white-space: normal; 
+            word-wrap: break-word; /* Prevents breaking words in half */
+            /* overflow-wrap: break-word;  */
+            overflow-y: auto; /* Adds scrollbar if text overflows */
+        }
+
+        .ok {
+            font-size: 23px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Addition Machine</h1>
+        <div class="ok">
+            <input type="number" id="num1" value="2"><span class="plus-sign">+</span><input type="number" id="num2" value="4">
+        </div>
+        <button onclick="displayMessage()">Submit</button>
+        <div class="result-box" id="resultBox"></div>
+    </div>
+
+    <script>
+        function displayMessage() {
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            
+            // Concatenate the two numbers as strings
+            let concatenatedNumber = num1 + num2;
+            
+            // Convert the concatenated result to a number
+            let repeatCount = parseInt(concatenatedNumber);
+            
+            let message = "Hello World ";
+            let result = message.repeat(repeatCount); // Repeat the message
+            document.getElementById('resultBox').innerText = result;
+        }
+    </script>
+</body>
+</html>
